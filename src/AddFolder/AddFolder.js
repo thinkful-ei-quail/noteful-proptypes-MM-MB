@@ -19,7 +19,7 @@ export default class AddFolder extends React.Component{
 
         let requestOptions = {
             method: 'POST',
-            body: formData,
+            body: formData
         };
 
         fetch(`${config.API_ENDPOINT}/folders`, requestOptions)
