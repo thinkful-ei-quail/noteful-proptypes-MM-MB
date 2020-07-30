@@ -96,9 +96,9 @@ class AddNote extends React.Component{
                     type='text'
                     name='name'
                     id='name'
-                    onChange={(e) = > this.updateName(e.target.value)}
+                    onChange={(e) => this.updateName(e.target.value)}
                 />
-                <textarea onChange={(e) = > this.upDateContent(e.target.value)}
+                <textarea onChange={(e) => this.upDateContent(e.target.value)}
                     id='content'
                     aria-label='note content'
                     defaultValue='Note Content'
