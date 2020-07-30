@@ -7,16 +7,45 @@
 import React from 'react';
 
 export default class AddFolder extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            folder:''
+        }
+    };
+    function handleAddFolder = e => {
+        e.preventDefault()
+        let formData = new FormData();
+
+        let requestOptions = {
+            method: 'POST',
+            body: formData,
+        };
+
+        fetch(`${config.API_ENDPOINT}/folders`, requestOptions)
+        .then(res =>{
+            if(!res.ok)
+                return res.json().then(e => Promise.reject(e))
+            return res.json()
+        })
+        .then(res => {
+            this.context.addFolder(folder.id)
+        })
+        .catch(error => {
+            console.error({error})
+        })
+    };
     render(){
         return(
             <div>
                 <form>
-                    <input type = 'text'>
-
+                    <label htmlFor='new_folder'>Enter Folder Name</label>
+                    <input id='new-folder' type = 'text' value='this.state.folder.value'
+                    onChange={e => this.setState(e.target.value)}>
                     </input>
                 </form>
-                <button>Submit</button>
+                <button onClick={e => this.handleAddFolder()}>Submit</button>
             </div>
         )
-    }
+    };
 }
