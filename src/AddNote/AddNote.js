@@ -67,7 +67,7 @@ class AddNote extends React.Component{
             console.log(res);
             this.context.addNote(res);
             this.props.history.push('/');
-        });
+        }));
     }
 
     renderAlt = () => {

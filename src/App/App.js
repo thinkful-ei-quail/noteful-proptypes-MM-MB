@@ -8,12 +8,17 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
+import AddFolder from '../AddFolder';
+import AddNote from '../AddNote';
 
 class App extends Component {
-    state = {
+    constructor(props) {
+    super(props); 
+    this.state = {
         notes: [],
         folders: []
-    };
+    }
+};
 
     componentDidMount() {
         Promise.all([
@@ -63,24 +68,32 @@ class App extends Component {
     renderMainRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:folderId'].map(path => {
                     <Route
                         exact
                         key={path}
                         path={path}
                         component={NoteListMain}
                     />
-                ))}
+                )}
                 <Route path="/note/:noteId" component={NotePageMain} />
             </>
-        );
-    }
+            addFolder = (newFolder) => {
+                this.setState({folders:[...this.state.folders, newFolder]});
+            };
+            addNote = (newNote) => {
+                this.setState({notes:[...this.state.notes, formNote]});
+            };
+        
+    
 
     render() {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addNote: this.addNote,
+            addFolder: this.addFolder
         };
         return (
             <ApiContext.Provider value={value}>
