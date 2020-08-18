@@ -7,18 +7,18 @@ import './NotePageNav.css';
 import PropTypes from 'prop-types';
 
 export default class NotePageNav extends React.Component {
-  static defaultProps = {
-    history: {
-      goBack: () => {}
-    },
-    match: {
-      params: {}
-    }
+  static propTypes = {
+    history: PropTypes.shape( {
+      goBack: PropTypes.func.isRequired
+    }),
+    match: PropTypes.shape({
+      params: PropTypes.object.isRequired
+    })
   };
-
   static contextType = ApiContext;
 
   render() {
+    console.log(this.props.match)
     const { notes, folders } = this.context;
     const { noteId } = this.props.match.params;
     const note = findNote(notes, noteId) || {};
@@ -40,8 +40,3 @@ export default class NotePageNav extends React.Component {
     );
   }
 }
-
-NotePageNav.propTypes = {
-  match: PropTypes.any,
-  history: PropTypes.any
-};

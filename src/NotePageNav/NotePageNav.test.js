@@ -7,11 +7,14 @@ describe(`NotePageNav component`, () => {
   const props = {
     folder: {
       "name": "Important"
+    },
+    match: {
+      params:{noteId:1}
     }
   }
 
   it('renders a .NotePageNav by default', () => {
-    const wrapper = shallow(<NotePageNav />)
+    const wrapper = shallow(<NotePageNav {...props}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 

@@ -2,13 +2,14 @@ import React from 'react';
 import Note from '../Note/Note';
 import ApiContext from '../ApiContext';
 import { findNote } from '../notes-helpers';
+import PropTypes from 'prop-types';
 import './NotePageMain.css';
 
 export default class NotePageMain extends React.Component {
-  static defaultProps = {
-    match: {
-      params: {}
-    }
+  static propTypes = {
+    match: PropTypes.shape({
+      params: PropTypes.object.isRequired
+    }).isRequired
   };
 
   static contextType = ApiContext;

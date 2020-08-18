@@ -8,8 +8,11 @@ import config from '../config';
 import './Note.css';
 
 export default class Note extends React.Component {
-  static defaultProps = {
-    onDeleteNote: () => {}
+  static propTypes = {
+    onDeleteNote: PropTypes.func,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    modified: PropTypes.string.isRequired
   };
 
   static contextType = ApiContext;
@@ -31,7 +34,6 @@ export default class Note extends React.Component {
       .then(() => {
         this.context.deleteNote(noteId);
         // allow parent to perform extra behaviour
-        this.props.onDeleteNote(noteId);
       })
       .catch((error) => {
         console.error({ error });
@@ -40,6 +42,7 @@ export default class Note extends React.Component {
 
   render() {
     const { name, id, modified } = this.props;
+    const modifiedDate = new Date(modified)
     return (
       <div className="Note">
         <h2 className="Note__title">
@@ -55,16 +58,10 @@ export default class Note extends React.Component {
         <div className="Note__dates">
           <div className="Note__dates-modified">
             Modified{' '}
-            <span className="Date">{format(modified, 'Do MMM YYYY')}</span>
+            <span className="Date">{format(modifiedDate, 'dd-MM-yyyy')}</span>
           </div>
         </div>
       </div>
     );
   }
 }
-
-Note.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  modified: PropTypes.string.isRequired
-};
