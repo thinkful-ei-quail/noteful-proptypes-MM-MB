@@ -12,6 +12,11 @@ import config from '../config';
 import './AddFolder.css';
 
 class AddFolder extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {}
+    },
+  }
   static contextType = ApiContext;
 
   constructor(props) {
@@ -39,7 +44,7 @@ class AddFolder extends Component {
     );
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     const newFolder = JSON.stringify({ name: this.state.name.value });
     const options = {

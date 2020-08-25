@@ -30,7 +30,8 @@ class App extends Component {
       fetch(`${config.API_ENDPOINT}/folders`)
     ])
       .then(([notesRes, foldersRes]) => {
-        if (!notesRes.ok) return notesRes.json().then((e) => Promise.reject(e));
+        if (!notesRes.ok) 
+          return notesRes.json().then((e) => Promise.reject(e));
         if (!foldersRes.ok)
           return foldersRes.json().then((e) => Promise.reject(e));
 
@@ -44,9 +45,9 @@ class App extends Component {
       });
   }
 
-  handleDeleteNote = (noteId) => {
+  handleDeleteNote = noteId => {
     this.setState({
-      notes: this.state.notes.filter((note) => note.id !== noteId)
+      notes: this.state.notes.filter(note => note.id !== noteId)
     });
   };
 
