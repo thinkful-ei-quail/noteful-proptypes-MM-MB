@@ -5,13 +5,13 @@
 
 
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import ApiContext from '../ApiContext';
 import config from '../config';
 
 import './AddFolder.css';
 
-class AddFolder extends Component {
+export default class AddFolder extends Component {
   static defaultProps = {
     history: {
       push: () => {}
@@ -92,4 +92,4 @@ class AddFolder extends Component {
   }
 }
 
-export default withRouter(AddFolder);
+// export default withRouter(AddFolder);

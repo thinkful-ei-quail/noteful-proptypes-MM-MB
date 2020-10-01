@@ -16,13 +16,10 @@ import AddNote from '../AddNote/AddNote';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notes: [],
-      folders: []
-    };
-  }
+state = {
+  notes: [],
+  folders: [],
+};
 
   componentDidMount() {
     Promise.all([

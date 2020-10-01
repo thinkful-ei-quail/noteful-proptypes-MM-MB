@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { format } from 'date-fns';
+import moment from 'moment-timezone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApiContext from '../ApiContext';
 import config from '../config';
@@ -41,7 +41,7 @@ export default class Note extends React.Component {
     if(!id){
       return null;
     }
-    const modifiedParse = Date.parse(modified)
+   
 
     return (
       <div className="Note">
@@ -59,7 +59,7 @@ export default class Note extends React.Component {
           <div className="Note__dates-modified">
             Modified{' '}
             <span className="Date">
-              {format(modifiedParse, 'MM dd yyyy')}
+              {moment(modified).format=('MM DD YYYY')}
               </span>
           </div>
         </div>

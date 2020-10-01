@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ApiContext from '../ApiContext';
 import config from '../config';
@@ -7,7 +7,7 @@ import CircleButton from '../CircleButton/CircleButton';
 
 import './AddNote.css';
 
-class AddNote extends Component {
+export default class AddNote extends Component {
   static contextType = ApiContext;
 
   constructor(props) {
@@ -153,4 +153,4 @@ class AddNote extends Component {
   }
 }
 
-export default withRouter(AddNote);
+// export default withRouter(AddNote);
